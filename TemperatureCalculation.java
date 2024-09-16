@@ -10,7 +10,7 @@ public class TemperatureCalculation {
        Scanner scanner = new Scanner(System.in);
 
        // declare variables
-       double[] temperature;
+       double[] temperatures;
        int days;
 
        // prrompt the user to enter days
@@ -18,15 +18,43 @@ public class TemperatureCalculation {
        days = scanner.nextInt();
 
        // instantiate the array
-       temperature = new double[days];
+       temperatures = new double[days];
 
        // intialization
        for (int i = 0; i < days; i++) {
            System.out.print("Enter the temperature for day " + (i + 1) + ": ");
-           temperature[i] = scanner.nextDouble();
+           temperatures[i] = scanner.nextDouble();
        }
 
        // calculate the average temperature
-      int averageTemperature = calculateAverage(temperatures);
+       double averageTemperature = calculateAverage(temperatures);
+
+       // calculate the temperatures above the average
+       int aboveAverage = calculateAboveAverage(temperatures, averageTemperature);
+
+       // print the results
+       System.out.println("The average temperature is: " + averageTemperature);
+       System.out.println("The temperatures above the average are: " + aboveAverage);
+
+       // close the scanner
+       scanner.close();
+    }
+    // calculate the average temperature
+    public static double calculateAverage(double[] temperatures) {
+        double sum = 0.0;
+        for (double temp : temperatures) {
+            sum += temp;
+        }
+        return sum / temperatures.length;
+    }
+    // calculate the temperatures above the average
+    public static int calculateAboveAverage(double[] temperatures, double averageTemperature) {
+        int count = 0;
+        for (double temp : temperatures) {
+            if (temp > averageTemperature) {
+                count++;
+            }
+        }
+        return count;
     }
 }
