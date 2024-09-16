@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
-/**
- * TemperatureCalculation
- */
+// calculate the average temperature and the temperatures above the average
 public class TemperatureCalculation {
 
     public static void main(String[] args) {
